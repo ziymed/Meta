@@ -1,30 +1,51 @@
-import React from 'react'
-import Logo from '../images/Logo.svg'
+import React, { useState } from 'react'
+import Logo from '../images/littlelemon_logo.png'
+import { Link } from 'react-router-dom'
+import CloseIcon from '../images/close.svg'
+import HamburgerIcon from '../images/hamburger.svg'
+
 
 function Nav() {
+  // const [menuOpen, setMenuOpen] = useState(false)
+
+  // const toggleMenu = () => {
+  //   setMenuOpen(!menuOpen)
+  // }
+
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleNav = () => {
+    setIsVisible(!isVisible);
+  };
+
   return (
-    <>
-      <nav className="navbar wrapper">
-          <a href="/" className="logo">
-              <img src={Logo} alt="Little Lemon Reataurant" />
-          </a>
-          <ul className="nav-links">
-              <li className="nav-item"><a href="/">Home</a></li>
-              <li className="nav-item"><a href="/about">About</a></li>
-              <li className="nav-item"><a href="/menu">Menu</a></li>
-              <li className="nav-item"><a href="/reservations">Reservations</a></li>
-              <li className="nav-item"><a href="/order-online">Order Online</a></li>
-              <li className="nav-item"><a href="/login">Login</a></li>
-          </ul>
-      </nav>
-      <div className="burger-menu">
-          <svg viewBox="0 0 1024 1024" className="home-icon">
-              <path
-              d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
-              ></path>
-          </svg>
+    <header className="site-header padding-block-900">
+      <div className="container">
+              <div className="site-header__inner">
+            <Link to="/">
+              <img className="logo" src={Logo} alt="Little Lemon" />
+            </Link>
+
+            <button onClick={toggleNav} className="mobile-nav-toggle" aria-expanded={isVisible ? 'true' : 'false'}>
+              <img className="icon-hamburger" src={isVisible ? CloseIcon : HamburgerIcon} alt="" aria-hidden="true" />
+              <img className="icon-close" src={CloseIcon} alt="" aria-hidden="true" />
+              <span className="sr-only">Menu</span>
+            </button>
+
+            <nav className="primary-navigation" data-visible={isVisible ? 'true' : 'false'}>
+                <ul className="nav flex-group">
+                    <li><Link to="/" className="active" aria-current="page">Home</Link></li>
+                    <li><Link to="/about">About</Link></li>
+                    <li><Link to="/online-menu">Menu</Link></li>
+                    <li><Link to="/reservations">Reservations</Link></li>
+                    <li><Link to="/order-online">Order Online</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                </ul>
+            </nav>
+        </div>
       </div>
-    </>
+    </header>
   )
 }
 

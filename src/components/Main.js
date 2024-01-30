@@ -1,14 +1,18 @@
 import React from 'react'
-import Hero from './Hero'
-import Specials from './Specials'
-import Cards from './Cards'
+import SpecialSection from './SpecialSection'
+import CardsSection from './CardsSection'
+import About from '../pages/About'
+import CallToActionSection from './CallToActionSection'
+import CustomersSaySection from './CustomersSaySection'
 
 function Main() {
   return (
     <>
-      <Hero />
-      <Specials />
-      <Cards />
+      <CallToActionSection />
+      <SpecialSection />
+      <CardsSection />
+      <CustomersSaySection />
+      <About />
     </>
   )
 }
