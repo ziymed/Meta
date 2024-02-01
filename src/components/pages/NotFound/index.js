@@ -1,5 +1,3 @@
-import './index.css';
-
 const NotFound = () => {
   return (
     <section className="about | bg-gray padding-block-900">
